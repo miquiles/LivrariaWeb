@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Usuário</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+<style>
+
+.ui-panelgrid {
+	text-align: center;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center;
+}
+
+.ui-inputfield {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid lightblue;
+	border-radius: 4px;
+}
+
+input[type="submit" i] {
+	width: 100%;
+	background-color: #363c77;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+
+
+</style>	
+	
+
+</h:head>
+
+<h:body>
+	<h:form>
+		<div class="container">
+			<div class="box">
+
+				<div class="divForm">
+					<h2> Cadastre seus dados</h2>
+
+					<p:inputText placeholder="Nome" value="#{pessoabean.pessoa.nome}" />
+					<p:inputText placeholder="CPF" value="#{pessoabean.pessoa.cpf}" />
+					<p:inputText placeholder="Email" value="#{pessoabean.pessoa.email}" />
+					<p:password placeholder="Senha" value="#{pessoabean.pessoa.senha}" />
+					<h:commandButton value="Salvar"
+						action="#{pessoabean.salvar_usuario}" />
+						
+						<h:commandButton value="Logar"
+						action="login" />
+						
+						<p:outputLabel value="#{pessoabean.message}"/>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="divList">
+
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="showcase-text-align-center">
+
+
+				<p:dataTable value="#{pessoabean.listarTodos}" var="pessoa">
+					<p:column headerText="CPF">
+						<h:outputText value="#{pessoa.cpf}" />
+					</p:column>
+					<p:column headerText="Nome">
+						<h:outputText value="#{pessoa.nome}" />
+					</p:column>
+					<p:column headerText="Email">
+						<h:outputText value="#{pessoa.email}" />
+					</p:column>
+					
+
+					
+
+
+				</p:dataTable>
+
+
+			</p:panelGrid>
+
+		</div>
+		
+	</h:form>
+</h:body>
+</html>

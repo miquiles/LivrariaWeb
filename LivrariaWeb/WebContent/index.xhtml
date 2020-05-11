@@ -1,0 +1,155 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Principal</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	
+	
+	<style>
+
+section.content{
+	margin-top: 335px;
+	
+}
+
+
+
+.ui-panelgrid {
+	text-align: center;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center;
+}
+
+.ui-inputfield {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid lightblue;
+	border-radius: 4px;
+}
+
+input[type="submit" i] {
+	width: 100%;
+	background-color: #363c77;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+</style>
+
+
+</h:head>
+
+<h:body>
+
+<h:form>
+
+<div class="Titulo principal">
+	<h2>Livraria Fuctura</h2> 
+	</div>
+
+	<header>
+	
+		<div class="center">
+		
+		
+
+			<nav>
+
+				<ul>
+				
+				
+					<h:link ><a onclick="window.open('https://www.fuctura.com.br/recife/','_blank')" style="color: #00fff3"> Livraria Fuctura </a></h:link>
+					<h:link><a href="index.jsf"> Home </a></h:link>
+					<h:link><a href="cadastrar_livro.jsf"> Cadastrar Livros </a></h:link>
+					 <h:link><a href="suporte.jsf"> Meu perfil </a></h:link>
+					 <h:link><a href="login.jsf"> Sair </a></h:link>
+				</ul>
+
+			</nav>
+
+		</div>
+	</header>
+
+
+
+
+	<section class="center">
+	<div class="center">
+		<div class="conteudo">
+		
+				
+				
+<div class="divList">
+
+<h:commandButton value="Listar livros " action="#{livrobean.carregarLivros}"/>
+
+
+		<div class="informacao">
+		<h2>Informações do produto</h2>
+		</div>
+				
+
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="showcase-text-align-center">
+
+			
+
+				<p:dataTable value="#{livrobean.listarLivros}" var="livro">
+					<p:column headerText="Nome">
+						<h:outputText value="#{livro.nome}" />
+					</p:column>
+					<p:column headerText="Idioma">
+						<h:outputText value="#{livro.idioma}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{livro.descricao}" />
+					</p:column>
+									
+					<p:column headerText="Autor">
+						<h:outputText value="#{livro.autor}" />
+					</p:column>
+					
+					<p:column headerText="País">
+						<h:outputText value="#{livro.nacionalidade}" />
+					</p:column>
+					
+					
+
+
+
+				</p:dataTable>
+
+
+			</p:panelGrid>
+
+		</div>
+
+
+ 
+   
+				
+		</div>
+	
+	
+	</div>
+	
+	</section>
+
+	</h:form>
+	
+	
+
+	
+</h:body>
+</html>

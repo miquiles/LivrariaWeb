@@ -31,9 +31,12 @@ public class PessoaBean {
 	
 	private String message;
 	
+	
+
+	
 
 	public String editar_usuario() {
-		carregarPessoas();
+		carregarCPF();
 		System.out.println("cheguei aqui");
 		return "";	
 	} 
@@ -48,13 +51,17 @@ public class PessoaBean {
 		}else {
 		pessoa = pessoaDao.merge(pessoa);
 		System.out.println("Salvo com sucesso");
-		carregarPessoas();
+	
 		pessoa = new Pessoa();
 		
 		
 		}return"";
 	}
 	
+	
+	public void carregarCPF() {
+		listarTodos = pessoaDao.listarCPF(pessoa);
+	}
 	
 	public void carregarPessoas() {
 		

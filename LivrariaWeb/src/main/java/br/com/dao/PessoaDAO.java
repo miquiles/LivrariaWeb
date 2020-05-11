@@ -18,6 +18,18 @@ import br.com.util.JPAUtil;
  */
 public class PessoaDAO {
 
+	
+	public List<Pessoa> listarTodos() {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		javax.persistence.Query query = entityManager.createQuery("from pessoa");
+
+		List<Pessoa> pessoa = query.getResultList();
+
+		return pessoa;
+
+	}
 
 
 	public Pessoa merge(Pessoa pessoa) {
@@ -48,30 +60,35 @@ public class PessoaDAO {
 		return retorno;
 	}
 
-	public List<Pessoa> listarTodos() {
+	public List<Pessoa> listarCPF(Pessoa pessoa) {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
+		
+		javax.persistence.Query query = entityManager.createQuery("from pessoa where cpf =" + pessoa.getCpf());
 
-		javax.persistence.Query query = entityManager.createQuery("from pessoa");
+		List<Pessoa> pessoas = query.getResultList();
 
-		List<Pessoa> pessoa = query.getResultList();
-
-		return pessoa;
+		return pessoas;
 
 	}
 
-	public Pessoa editar(Pessoa pessoa) {
-
+	
+	
+	
+public void editarPorId(Pessoa pessoa) {
+		
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-
-		Pessoa retorno = entityManager.merge(pessoa);
-
+		
+		
+		Object id = JPAUtil.getPrimaryKey(pessoa);
+		entityManager.createQuery("select from " + pessoa.getClass().getCanonicalName() + " where cpf = '?'" + id).executeUpdate();
+		
 		entityTransaction.commit();
 		entityManager.close();
-
-		return retorno;
+		
+		
 	}
 
 }

@@ -74,9 +74,15 @@ input[type="submit" i] {
 			<div class="box">
 
 				<div class="divForm">
+			<h2> Edite seus dados</h2>
 			
-
+			
 					<p:inputText placeholder="CPF" value="#{pessoabean.pessoa.cpf}" />
+					
+					
+					<h:commandButton value="Carregar dados" target="#{pessoabean.pessoa}"
+						 action="#{pessoabean.editar_usuario}"/>
+			
 
 					<p:inputText placeholder="Nome" value="#{pessoabean.pessoa.nome}" />
 
@@ -93,8 +99,9 @@ input[type="submit" i] {
 						action="#{pessoabean.salvar_usuario}" />
 						
 					
-					<h:commandButton value="Editar"
+					<h:commandButton value="Editar" target="#{pessoabean.pessoa}"
 						 action="#{pessoabean.editar_usuario}"/>
+						 
 			
 
 				</div>

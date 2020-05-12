@@ -1,5 +1,5 @@
 # LivrariaWeb
-Exercício proposto em sala de aula pelo professor Cleiton.
+Desafio proposto em sala de aula pelo professor Cleiton.
 
 Arquitetura : MVC
 
